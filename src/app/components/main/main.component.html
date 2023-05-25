@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+            <div>
+                <mat-card style="margin: 12px;">
+                    <form [formGroup]="bookingForm">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="Name" formControlName="name">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput placeholder="Email Address" email="true" formControlName="emailAddress">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label> No. of Travellers</mat-label>
+                            <input matInput placeholder="No of Travellers" formControlName="numberofTravellers">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Budget Per Person</mat-label>
+                            <input matInput placeholder="Budget Per Person" formControlName="budgetPerPerson">
+                            <mat-hint >Budget Per Person ($)</mat-hint>
+                        </mat-form-field>
+                            <mat-label>Where do you want to go ?</mat-label><br>
+                            <select  formControlName="destination">
+                                <option [ngValue]="null" disabled>Select Country</option>
+                                <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                            </select><br>           
+                    </form>
+                    <button [disabled]="bookingForm.invalid" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+                </mat-card>
+            </div>  
+    </div>
+</div>

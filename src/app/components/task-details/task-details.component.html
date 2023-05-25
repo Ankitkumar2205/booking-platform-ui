@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="!isEmpty">
+            <div>
+                <mat-card style="margin: 12px;">
+                    <mat-card  style="margin: 12px;">
+                        <mat-label>Name</mat-label>
+                        <p>{{detailsForm.name}}</p>
+                    </mat-card>
+                    <mat-card  style="margin: 12px;">
+                        <mat-label>Email Address</mat-label>
+                        <p>{{detailsForm.emailAddress}}</p>
+
+                    </mat-card>
+                    <mat-card  style="margin: 12px;">
+                        <mat-label>Destination</mat-label>
+                        <p>{{detailsForm.destination}}</p>
+
+                    </mat-card>
+                    <mat-card  style="margin: 12px;">
+                        <mat-label>Number of Travellers</mat-label>
+                        <p>{{detailsForm.numberofTravellers}}</p>
+
+                    </mat-card>
+                    <mat-card  style="margin: 12px;">
+                        <mat-label>Budget Per Person ($)</mat-label>
+                        <p>{{detailsForm.budgetPerPerson}}</p>
+                    </mat-card>
+                </mat-card>
+                <button mat-raised-button color="primary" (click)="back()" style="margin:12px">Back</button>
+            </div>  
+        </div>
+    <h1 *ngIf="isEmpty">No Data Found</h1>
+</div>
