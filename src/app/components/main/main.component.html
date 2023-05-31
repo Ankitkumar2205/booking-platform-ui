@@ -26,7 +26,10 @@
                                 <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
                             </select><br>           
                     </form>
-                    <button [disabled]="bookingForm.invalid" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+                    <div class="btns-1">
+                        <button [disabled]="bookingForm.invalid" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+                        <button mat-raised-button class="btn btn-success" (click)="showSubmissions()" style="display: flex;">Booking Details</button>
+                       </div>                
                 </mat-card>
             </div>  
     </div>

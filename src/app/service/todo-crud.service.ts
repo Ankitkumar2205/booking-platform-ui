@@ -11,8 +11,8 @@ export class TodoCrudService {
   constructor( private http:HttpClient) { 
    }
 
-   getBooking(requestId:string):Observable<IBooking>{
-      return this.http.get<IBooking>("Http://localhost:3000/bookings/"+requestId).pipe(map((res:any)=>{
+   getBooking():Observable<IBooking[]>{
+      return this.http.get<IBooking>("Http://localhost:3000/bookings").pipe(map((res:any)=>{
         return res;
       }));
 

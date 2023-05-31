@@ -7,7 +7,7 @@ const routes: Routes = [{
   path:'',
   component:MainComponent},
 {
-  path:'details/:id',
+  path:'details',
   component:TaskDetailsComponent
 }];
 

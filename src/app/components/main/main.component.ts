@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
       budgetPerPerson:this.bookingForm.controls.budgetPerPerson.value
     }
     this.todoService.postBooking(bookingDetails).subscribe(res=>{
-      alert('Bookinf Made Successfully')
+      alert('Booking Made Successfully')
       this.bookingForm.reset();
       this.router.navigate(['/details',res._id]);
     },err=>{
@@ -48,4 +48,7 @@ export class MainComponent implements OnInit {
     });
   }
 
+  showSubmissions(){
+    this.router.navigate(['details']);
+  }
 }

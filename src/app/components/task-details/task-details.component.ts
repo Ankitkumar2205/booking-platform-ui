@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IBooking } from 'src/app/model/task';
 import { TodoCrudService } from 'src/app/service/todo-crud.service';
 
@@ -10,33 +10,30 @@ import { TodoCrudService } from 'src/app/service/todo-crud.service';
   styleUrls: ['./task-details.component.scss']
 })
 export class TaskDetailsComponent implements OnInit {
-  detailsForm!:IBooking;
+  bookingSubmissions!:IBooking[];
   isEmpty!:boolean;
   constructor( private fb: FormBuilder,
     private todoService:TodoCrudService,
-    private activatedRoute:ActivatedRoute,
     private router:Router) { }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id){
-      this.todoService.getBooking(id).subscribe(res=>{
+      this.todoService.getBooking().subscribe(res=>{
         this.setDetailsForm(res);
       })
-    }
+    
   }
 
-  setDetailsForm(data:IBooking){
-    this.detailsForm = {
-      name: data.name,
-      emailAddress:data.emailAddress,
-      destination:data.destination,
-      numberofTravellers:data.numberofTravellers,
-      budgetPerPerson:data.budgetPerPerson
+  setDetailsForm(data:IBooking[]){
+    
+    if(Array.isArray(data)){
+      this.isEmpty =  data.length===0 ? true : false;
+      if(!this.isEmpty){
+        this.bookingSubmissions = data;
+      }
     }
-    this.isEmpty = Object.values(this.detailsForm).every(x => x === null || x === '');
 
   }
+
   back(){
     this.router.navigate(['']);
   }
